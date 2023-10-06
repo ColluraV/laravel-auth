@@ -18,7 +18,7 @@ return new class extends Migration
             $table->string('title');
             $table->date('publication_date')->nullable();
             $table->string('slug')->unique();
-            $table->string('url_link');
+            $table->text('url_link');
 
         });
     }

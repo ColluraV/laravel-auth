@@ -20,8 +20,8 @@ Route::get('/', function () {
 });
 
 Route::get('/admin', function () {
-    return view('dashboard');
-})->middleware(['auth', 'verified'])->name('admin.dashboard');
+    return view('admin.dashboard');
+})->middleware(['auth', 'verified'])->name('dashboard');
 
 
 //raggruppo le route per renderle accessibili
@@ -32,12 +32,12 @@ Route::middleware(['auth', 'verified'])
     ->group(function () {
         
         //project creater
-        Route::post('/admin/projects', [ProjectController::class, "store"])->name("admin.projects.store");
-        Route::get('/admin/projects/create', [ProjectController::class, "create"])->name("admin.projects.create");
+        Route::post('/projects', [ProjectController::class, "store"])->name("projects.store");
+        Route::get('/projects/create', [ProjectController::class, "create"])->name("projects.create");
         
         //projects reader
-        Route::get('/admin/projects', [ProjectController::class, "index"])->name("admin.projects.index");
-        Route::get('/admin/projects/{project}]', [ProjectController::class, "show"])->name("admin.projects.show");
+        Route::get('/projects', [ProjectController::class, "index"])->name("projects.index");
+        Route::get('/projects/{project}]', [ProjectController::class, "show"])->name("projects.show");
     });
 
 
@@ -50,9 +50,9 @@ Route::get("/projects", [GuestProjectController::class, "index"])->name("project
 
 
 Route::middleware('auth')->group(function () {
-    Route::get('/admin/profile', [ProfileController::class, 'edit'])->name('admin.profile.edit');
-    Route::patch('/admin/profile', [ProfileController::class, 'update'])->name('admin.profile.update');
-    Route::delete('/admin/profile', [ProfileController::class, 'destroy'])->name('admin.profile.destroy');
+    Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
+    Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
+    Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 });
 
 require __DIR__ . '/auth.php';

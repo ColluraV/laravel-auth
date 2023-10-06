@@ -14,9 +14,12 @@ return new class extends Migration
         Schema::create('projects', function (Blueprint $table) {
             $table->id();
             $table->timestamps();
-            $table->text('description');
+            $table->text('description')->nullable();
             $table->string('title');
             $table->date('publication_date')->nullable();
+            $table->string('slug')->unique();
+            $table->string('url_link');
+
         });
     }
 

@@ -30,7 +30,8 @@
                     @endauth
                 </div>
             @endif
-
+            <h1 style="color:#e5e7eb">welcome blade php</h1>
+            
         </div>
     </body>
 </html>

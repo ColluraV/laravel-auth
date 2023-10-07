@@ -19,27 +19,27 @@
 
                 <form action="{{ route('comic.store') }}" method="POST">
                     @csrf()
-                    <h1 class="form-title text-center">Compila il Form per aggiungere l'elemento al database</h1>
+                    
                     <h1 class="form-title text-center">Compila il Form per modificare l'elemento nel database</h1>
                     <div class="my-3 mb-3">
                         <label for="title" class="form-label fw-bold">Titolo</label>
-                        <input name="title" type="text" class="form-control" value="{{old('title')}}" >
+                        <input name="title" type="text" class="form-control" value="{('title')}}" >
                         <div class="form-text">Inserisci il titolo</div>
                     </div>
                     <div class="mb-3">
                         <label for="description" class="form-label fw-bold">Descrizione</label>
-                        <input name="description" type="text" class="form-control" value="{{old('description')}}">
+                        <input name="description" type="text" class="form-control" value="{('description')}}">
                         <div class="form-text">Inserisci la descrizione</div>
                     </div>
 
                     <div class="mb-3">
                         <label for="url_link" class="form-label fw-bold">Collegamento</label>
-                        <input name="url_link" type="text" class="form-control" value="{{old('url_link')}}">
+                        <input name="url_link" type="text" class="form-control" value="{('url_link')}}">
                         <div class="form-text">Inserisci il link al progetto</div>
                     </div>
                     <div class="mb-3">
                         <label for="publication_date" class="form-label fw-bold">Data rilascio progetto</label>
-                        <input name="publication_date" type="date" class="form-control" value="{{old('publication_date')}}">
+                        <input name="publication_date" type="date" class="form-control" value="{('publication_date')}}">
                         <div class="form-text">Inserisci la data di pubblicazione</div>
 
                     <div class="d-flex text-center justify-content-center gap-2 my-4">

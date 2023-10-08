@@ -21,6 +21,7 @@ protected $fillable=[
     "description",
     "url_link",
     "publication_date",
+    "slug",
 ];
 
 

@@ -29,15 +29,21 @@ Route::middleware(['auth', 'verified'])
     ->name('admin.')
     ->prefix('admin')
     ->group(function () {
-        
+
         //projects reader
         Route::get('/projects', [ProjectController::class, "index"])->name("projects.index");
         Route::get('/projects/{project}]', [ProjectController::class, "show"])->name("projects.show");
-    
-      //project creater
-      Route::post('/projects', [ProjectController::class, "store"])->name("projects.store");
-      Route::get('/projects/create', [ProjectController::class, "create"])->name("projects.create");
-      
+
+        //project creater
+        Route::post('/projects', [ProjectController::class, "store"])->name("projects.store");
+        Route::get('/projects/create', [ProjectController::class, "create"])->name("projects.create");
+
+        //update
+        Route::get('/projects/{id}/edit', [ProjectController::class, "edit"])->name("projects.edit");
+        Route::put("/projects/{project}", [ProjectController::class, "update"])->name("projects.update");
+   
+        //delete
+        Route::delete("/projects/{id}", [ProjectController::class, "destroy"])->name("projects.destroy");
     });
 
 

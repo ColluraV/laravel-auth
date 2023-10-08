@@ -3,7 +3,6 @@
 namespace App\Http\Controllers;
 
 use App\Models\Project;
-use Illuminate\Contracts\View\View;
 use Illuminate\Http\Request;
 
 class ProjectController extends Controller
@@ -13,5 +12,4 @@ class ProjectController extends Controller
 
         return view("admin.projects.index", compact("projects"));
     }
-
 }

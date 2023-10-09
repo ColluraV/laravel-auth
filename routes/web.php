@@ -19,7 +19,7 @@ Route::get('/', function () {
     return view('guests.welcome');
 });
 
-Route::get('/admin', function () {
+Route::get('/home', function () {
     return view('dashboard');
 })->middleware(['auth', 'verified'])->name('dashboard');
 
@@ -33,7 +33,7 @@ Route::middleware(['auth', 'verified'])
 
         //projects reader
         Route::get('/projects', [ProjectController::class, "index"])->name("projects.index");
-        Route::get('/projects/{project}]', [ProjectController::class, "show"])->name("projects.show");
+        Route::get('/projects/{slug}]', [ProjectController::class, "show"])->name("projects.show");
 
         //project creater
         Route::post('/projects', [ProjectController::class, "store"])->name("projects.store");
@@ -49,10 +49,6 @@ Route::middleware(['auth', 'verified'])
 
 
 Route::get("/projects", [GuestProjectController::class, "index"])->name("projects.index");
-
-
-
-
 
 
 

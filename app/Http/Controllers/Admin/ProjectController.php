@@ -3,58 +3,55 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
+use App\Http\Requests\ProjectStoreRequest;
 use App\Models\Project;
 use Illuminate\Http\Request;
 use Illuminate\Support\Str;
 
 class ProjectController extends Controller
 {
-    
-          
-    public function index(){
+
+
+    public function index()
+    {
 
         $projects = Project::all();
 
-        return view("admin.projects.index",compact("projects"));
-            /*con compact creo un array di oggetti "project" 
+        return view("admin.projects.index", compact("projects"));
+        /*con compact creo un array di oggetti "project" 
                 e vengono associati i valori degli oggetti del db*/
     }
 
-    public function show($id){
-         /*seleziono ilo singolo elemento nel db tramite il suo id
+    public function show($id)
+    {
+        /*seleziono ilo singolo elemento nel db tramite il suo id
          o restituisco errore 404*/
-        $project=Project::findOrFail($id);
+        $project = Project::findOrFail($id);
 
         return view("admin.projects.show", compact("project"));
-
-
     }
-    
-    
+
+
     /*reindirizzo al form di creazione */
-    
-    public function create(){
+
+    public function create()
+    {
         return view("admin.projects.create");
     }
 
 
     /*invio i dati al db attraverso un istanza del model*/
-    
-    public function store(Request $request){
-        $data = $request->validate([
-            "title" => "required|max:55",
-            "url_link" => "required",
-            "publication_date"=>"required",
-            "description"=>"nullable",
 
-
-        ]);
+    public function store(ProjectStoreRequest $request)
+    {
+        $data = $request->validated();
 
         $counter = 0;
 
         do {
             // genero uno slug univoco per poter recuperare un elemento senza scrivere l'id nell'url (finezza estetica)
-            $slug = Str::slug($data["title"]) . ($counter > 0 ? "-" .$counter : "");
+
+            $slug = Str::slug($data["title"]) . ($counter > 0 ? "-" . $counter : "");
 
             // cerco se esiste già un elemento con questo slug
             $alreadyExists = Project::where("slug", $slug)->first();
@@ -66,7 +63,7 @@ class ProjectController extends Controller
 
 
         $project = Project::create($data);/*il comando create esegue sia il fill che il save*/
-        
+
         return redirect()->route("admin.projects.show", $project->id);
         dump($project->id);
     }
@@ -76,7 +73,7 @@ class ProjectController extends Controller
     public function edit($id)
     {
         $project = Project::findOrFail($id);
-        return view ("admin.projects.edit",["project"=>$project]);
+        return view("admin.projects.edit", ["project" => $project]);
     }
 
 
@@ -84,11 +81,11 @@ class ProjectController extends Controller
     public function update(Request $request, string $id)
     {
         $project = Project::findOrFail($id);
-        $data=$request->all();
+        $data = $request->all();
 
-        $project -> update($data);
+        $project->update($data);
 
-        return redirect()->route('admin.projects.show',$project->id);
+        return redirect()->route('admin.projects.show', $project->id);
     }
 
 

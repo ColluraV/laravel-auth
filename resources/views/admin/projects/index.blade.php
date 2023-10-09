@@ -22,7 +22,7 @@
                     {{-- ////////////// cards in ciclo for //////////////// --}}
                     @foreach ($projects as $project)
                         <div class="col-12 col-md-4 col-lg-2">
-                            <a href="{{ route('admin.projects.show', $project->slug) }}">
+                            <a href="{{ route('admin.projects.show', $project->id) }}">
 
                                 <div class="card border-0 rounded-0 h-100">
 

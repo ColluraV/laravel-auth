@@ -17,7 +17,7 @@
                     </div>
                 @endif
 
-                <form action="{{ route('admin.projects.store') }}" method="POST">
+                <form action="{{ route('admin.projects.store') }}" method="POST" enctype="multipart/form-data">
                     @csrf()
                     
                     <h1 class="form-title text-center">Compila il Form per modificare l'elemento nel database</h1>
@@ -31,7 +31,11 @@
                         <input name="description" type="text" class="form-control" value="{{old('description')}}">
                         <div class="form-text">Inserisci la descrizione</div>
                     </div>
-
+                    <div class="mb-3">
+                        <label for="image" class="form-label fw-bold">Immagine</label>
+                        <input name="image" type="file" class="form-control" accept="image/*">
+                        <div class="form-text">Inserisci l'immagine di anteprima</div>
+                    </div>
                     <div class="mb-3">
                         <label for="url_link" class="form-label fw-bold">Collegamento</label>
                         <input name="url_link" type="text" class="form-control" value="{{old('url_link')}}">

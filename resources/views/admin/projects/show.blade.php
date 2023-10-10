@@ -11,13 +11,18 @@
         <div class="col-12 col-lg-4 px-5 d-flex flex-column justify-content-center">
             <h1 class="text-white">{{ $project->title }}</h1>
 
-            <p class="white-mb0">Descrizione progetto:</p>
-            <p>{{ $project->description }}</p>
+            <p> class="white-mb0">Descrizione progetto:</p>
+            <h2>{{ $project->description }}</h2>
+            <p>immagine sotto</p>
+            <img src="{{ asset('/storage/'. $project->image)}}" alt="">
 
+
+            {{-- funziona anche con:--}}
+              {{--<img src="{{ '/storage/'. $project->image }}" alt="" class="img-fluid"> --}}
             <p class="white-mb0">Link:</p>
             <p>{{$project->url_link}}</p>
             <p class="white-mb0">Data pubblicazione :</p>
-            <p>{{$project->publication_date}}</p>
+            <p>{{$project->publication_date->format("d/m/Y")}}</p>
 
 
         </div>

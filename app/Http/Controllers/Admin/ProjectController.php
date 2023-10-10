@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Http\Requests\ProjectStoreRequest;
 use App\Models\Project;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Str;
 
 class ProjectController extends Controller
@@ -62,10 +63,20 @@ class ProjectController extends Controller
         $data["slug"] = $slug;
 
 
+        /*carico il file del Public Storage nel $data*/
+        $data["image"]= Storage::put("projects",$data["image"]);
+
+        /*Per salvare l'immagine in un disco diverso da quello di default usiamo il
+        metodo Storage::disk('nome') 
+        
+            $img_path = Storage::disk('public')->put('uploads', $data['image']);
+
+        */
+
         $project = Project::create($data);/*il comando create esegue sia il fill che il save*/
 
         return redirect()->route("admin.projects.show", $project->id);
-        dump($project->id);
+        dump($data);
     }
 
 

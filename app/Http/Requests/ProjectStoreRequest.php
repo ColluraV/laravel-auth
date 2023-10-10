@@ -33,7 +33,7 @@ class ProjectStoreRequest extends FormRequest
             "url_link" => "required",
             "publication_date"=>"required",
             "description"=>"nullable",
-        
+            "image" => "nullable|image|max:6144",
         ];
     }
 }

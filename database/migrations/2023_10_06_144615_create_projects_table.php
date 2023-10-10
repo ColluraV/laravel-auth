@@ -19,7 +19,7 @@ return new class extends Migration
             $table->date('publication_date')->nullable();
             $table->string('slug')->unique();
             $table->text('url_link');
-
+            $table->text('image');
         });
     }
 

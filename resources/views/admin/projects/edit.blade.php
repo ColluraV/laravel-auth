@@ -17,7 +17,7 @@
                     </div>
                 @endif
 
-                <form action="{{ route('admin.projects.store') }}" method="POST">
+                <form action="{{ route('admin.projects.store') }}" method="POST" enctype="multipart/form-data">
                     @csrf()
                     
                     <h1 class="form-title text-center">Compila il Form per modificare l'elemento nel database</h1>

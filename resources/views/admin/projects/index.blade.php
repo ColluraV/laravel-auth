@@ -26,7 +26,7 @@
 
                                 <div class="card border-0 rounded-0 h-100">
 
-
+                                    <img src="{{ asset('storage/'.$project->image)}}" alt="">
                                     <div class="card-body d-flex flex-column text-white bg-dark"> {{-- //////nome////// --}}
                                         {{ $project['description'] }}
                                     </div>
@@ -35,7 +35,7 @@
                                         <div class="absolute top hidden justify-content-center">
                                             Tipologia:{{ ucfirst($project['url_link']) }}</div>
                                         <div class="absolute bottom hidden justify-content-center">Data pubblicazione:
-                                            {{ $project['publication_date'] }}</div>
+                                            {{ $project['publication_date']->format("d/m/Y") }}</div>
 
                                     </div>
 

@@ -33,7 +33,7 @@
                                     <div class="overlay"> {{-- //////info in hover////// --}}
 
                                         <div class="absolute top hidden justify-content-center">
-                                            Tipologia:{{ ucfirst($project['url_link']) }}</div>
+                                            {{ ucfirst($project['url_link']) }}</div>
                                         <div class="absolute bottom hidden justify-content-center">Data pubblicazione:
                                             {{ $project['publication_date']->format("d/m/Y") }}</div>
 

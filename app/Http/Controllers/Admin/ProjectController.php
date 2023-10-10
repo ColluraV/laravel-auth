@@ -94,6 +94,13 @@ class ProjectController extends Controller
         $project = Project::findOrFail($id);
         $data = $request->all();
 
+        /*controllo se esiste una immagine e la elimino dallo storage prima di sostituirla */
+        if (isset($data["image"])){
+            Storage::delete($project->image);
+        };
+
+        $data["image"]= Storage::put("projects",$data["image"]);
+
         $project->update($data);
 
         return redirect()->route('admin.projects.show', $project->id);
